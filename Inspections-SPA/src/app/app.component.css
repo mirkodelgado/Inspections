@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+
+#mainContent.app-component {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 50px;
+}
+
+#footer-content {
+    background: #00264c;
+    color: #fff; 
+    height: 60px;}
+  

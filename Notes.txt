@@ -1,0 +1,152 @@
+
+
+Section 1, Lecture 2
+
+
+dotnet --version
+
+2.1.402
+
+
+node --version
+
+v8.12.0
+
+
+Software tools
+
+- vs code
+- postman
+-sql lite browser
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 4
+
+
+view available options:
+
+dotnet -h
+
+dotnet new -h
+
+dotnet new webapi -h
+
+dotnet new webapi -o EirViewer.API -n EirViewer.API
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 5
+
+
+vs code plug-ins for dotnet core
+
+
+C# for Visual Studio Code (powered by OmniSharp)
+
+C# Extensions
+
+vscode-nuget-package-manager
+
+~~~~~~~~~~~~~~~
+
+*** Code commented in Startup.Cs
+
+Ctrl+/   - comment/uncomment line
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 6, 7
+
+launchSettings.json
+
+set launch browser to false
+remove https redirect port from application url
+
+dotnet run
+
+dotnet watch run
+
+vscode auto save feature in vscode
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 8
+
+Ctrl+.   add using statements
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 9, 10, 11
+
+dotnet ef -h
+
+dotnet ef migrations add InitialCreate
+
+dotnet ef database update
+
+
+Ctrl+p - open file
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 12
+
+
+npm install -g @angluar/cli@6.0.8
+
+ng new EirViewer-SPA
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 14
+
+
+vs code plug-ins for angular
+
+Angular v7 Snippets for VSCode
+Angular Files 1.6.2
+Angular Language Service
+angular2-switcher
+
+Alt+o
+Alt+i
+Alt+u
+
+Auto Rename Tag
+Bracket Pair Colorizer
+Debugger for Chrome
+Material Icon Theme
+Path Intellisense
+Prettier - Code Formatter
+TSLint
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 16
+
+Cross Origin Resource Sharing (CORS)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 2, Lecture 18
+
+Bootstrap, Fontawesome
+
+npm install bootstrap font-awesome
+
+git remote add origin https://github.com/mirkodelgado/EirViewer.git
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

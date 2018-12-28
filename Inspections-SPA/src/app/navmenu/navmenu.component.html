@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+
+  <a class="navbar-brand" [routerLink]="['/home']"><img [src]="'../assets/images/ITS-ConGlobal-Logo.png'"></a>
+      
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['link-active']">Home</a>
+          </li>
+                              
+          <li class="nav-item">
+              <a class="nav-link" (click)="openModal(template)">About</a>
+          </li>
+
+      </ul>    
+  </div>
+</nav>
+
+<ng-template #template>
+<div class="modal-header">
+<h4 class="modal-title pull-left">Inspections</h4>
+<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<p><strong>Newport Systems - Copyright &copy; 2016 - {{ crDate }}</strong></p> 
+<p>Version 1.0.0.1 November 27, 2018</p> 
+</div>
+</ng-template>

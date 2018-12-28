@@ -1,0 +1,54 @@
+<div class="header_02">Inspection Results</div>
+
+<div class="margin_bottom_20"></div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2 ">
+
+    <ngx-datatable
+      class="material"
+      [rows]="rows"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [externalPaging]="true"
+      [count]="pagination.totalItems"
+      [offset]="pagination.offset"
+      [limit]="pagination.itemsPerPage"
+      (page)='setPage($event)'>
+    </ngx-datatable>
+
+<!--
+    <ngx-datatable
+    class="bootstrap"
+    [rows]="rows"
+    [loadingIndicator]="loadingIndicator"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [reorderable]="reorderable">
+  </ngx-datatable>
+-->  
+  </div>
+
+  <ng-template #inspectionDateTemplate let-value="value">
+    {{value | date: 'MM/dd/yyyy hh:mm a' }}
+  </ng-template>
+
+  <ng-template #inspectionClientTemplate let-value="value">
+    {{ value }}
+  </ng-template>
+
+  <ng-template #inspectionNumberTemplate let-row ="row" let-value="value" let-i="index">
+      <!-- <a class="btn btn-link btn-xs" href="javascript:;" (click)="getInspection(value)"> {{ value }}</a>    -->
+      <a (click)="getInspection(value)" style="color : blue; text-decoration: underline" >{{ value }}</a>
+  </ng-template>
+
+</div>
+
+<div class="margin_bottom_20"></div>
+<div class="margin_bottom_20"></div>

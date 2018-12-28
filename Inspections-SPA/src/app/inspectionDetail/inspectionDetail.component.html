@@ -1,0 +1,37 @@
+<div class="header_02">Inspection Details</div>
+
+<div class="margin_bottom_20"></div>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="margin_bottom_20"></div>
+
+    <h5><label>Inspection Number: </label> {{ inspectionM.imInspectionRefNmbr }} </h5>
+    <h5><label>Client: </label> {{ inspectionM.billToClient.btcBillToClientShortName }} </h5>
+    <h5><label>Location: </label> {{ inspectionM.depot.dptName }} </h5>
+    <h5><label>Address: </label> {{ inspectionM.depot.dptAddress1 }} </h5>
+    <h5><label>Inspection Date: </label> {{ inspectionM.imInspectionDate | date: 'MM/dd/yyyy hh:mm a' }} </h5>
+    <h5><label>Chassis ID: </label> {{ inspectionM.imEquip1Id }} </h5>
+
+    <h5 *ngIf="isCleanInspection()">No Damages - Clean Inspection </h5>
+
+    <div class="margin_bottom_20"></div>
+
+    <div *ngIf="!isCleanInspection()">
+
+        <h5 ><label>Line Damages: </label> </h5>
+        <div class="margin_bottom_20"></div>
+
+        <div *ngFor="let inspectionDtl of inspectionDetails">
+            <h5>{{ inspectionDtl.inspectionD.idLineNmbr }}) {{ inspectionDtl.taskSchedule.tsShortTaskDescription }}, {{ inspectionDtl.locations.lgLocationAlpha }}</h5>
+
+        </div>
+    </div>
+    
+  </div>
+  <div class="col-md-6">
+    <div class="margin_bottom_20"></div>
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+</div>
+</div>
