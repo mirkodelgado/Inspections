@@ -3,11 +3,12 @@
 <div class="margin_bottom_20"></div>
 
 <div class="row">
-  <div class="col-md-8 offset-md-2 ">
+  <div class="col-md-10 offset-md-1 ">
 
     <ngx-datatable
       class="material"
       [rows]="rows"
+      [loadingIndicator]="loading"
       [columns]="columns"
       [columnMode]="'force'"
       [headerHeight]="50"
@@ -17,6 +18,8 @@
       [count]="pagination.totalItems"
       [offset]="pagination.offset"
       [limit]="pagination.itemsPerPage"
+      [externalSorting]="true"
+      (sort)="onSort($event)"
       (page)='setPage($event)'>
     </ngx-datatable>
 

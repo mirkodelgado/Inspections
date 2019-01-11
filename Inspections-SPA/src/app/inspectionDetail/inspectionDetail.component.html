@@ -7,15 +7,70 @@
 
     <div class="margin_bottom_20"></div>
 
-    <h5><label>Inspection Number: </label> {{ inspectionM.imInspectionRefNmbr }} </h5>
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Inspection:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.imInspectionRefNmbr }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Client:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.billToClient.btcBillToClientShortName }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Location:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.depot.dptName }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Address:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.depot.dptAddress1 }}</h5>
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Date:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.imInspectionDate | date: 'MM/dd/yyyy hh:mm a' }}</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h5 class="text-right"><label>Chassis ID:</label></h5>
+        </div>
+        <div class="col-md-9">
+            <h5>{{ inspectionM.imEquip1Id }}</h5>
+        </div>
+    </div>
+        
+    <!-- <h5><label>Inspection Number: </label> {{ inspectionM.imInspectionRefNmbr }} </h5>
     <h5><label>Client: </label> {{ inspectionM.billToClient.btcBillToClientShortName }} </h5>
     <h5><label>Location: </label> {{ inspectionM.depot.dptName }} </h5>
     <h5><label>Address: </label> {{ inspectionM.depot.dptAddress1 }} </h5>
     <h5><label>Inspection Date: </label> {{ inspectionM.imInspectionDate | date: 'MM/dd/yyyy hh:mm a' }} </h5>
-    <h5><label>Chassis ID: </label> {{ inspectionM.imEquip1Id }} </h5>
+    <h5><label>Chassis ID: </label> {{ inspectionM.imEquip1Id }} </h5> -->
 
     <h5 *ngIf="isCleanInspection()">No Damages - Clean Inspection </h5>
 
+    <div class="margin_bottom_20"></div>
     <div class="margin_bottom_20"></div>
 
     <div *ngIf="!isCleanInspection()">
@@ -24,8 +79,7 @@
         <div class="margin_bottom_20"></div>
 
         <div *ngFor="let inspectionDtl of inspectionDetails">
-            <h5>{{ inspectionDtl.inspectionD.idLineNmbr }}) {{ inspectionDtl.taskSchedule.tsShortTaskDescription }}, {{ inspectionDtl.locations.lgLocationAlpha }}</h5>
-
+            <h5><label>{{ inspectionDtl.inspectionD.idLineNmbr }}) </label>  {{ inspectionDtl.taskSchedule.tsShortTaskDescription }}, {{ inspectionDtl.locations.lgLocationAlpha }}</h5>
         </div>
     </div>
     

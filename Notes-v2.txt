@@ -174,3 +174,16 @@ npm install bootstrap font-awesome
 git remote add origin https://github.com/mirkodelgado/EirViewer.git
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Section 17, Lecture 177
+
+ng build
+
+ng build --prod
+
+
+Section 17, Lecture 183
+
+dotnet publish -o C:\Angular\Publish\Inspections
+

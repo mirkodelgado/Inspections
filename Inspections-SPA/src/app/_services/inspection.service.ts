@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { environment } from 'src/environments/environment';
+
 import { InspectionM } from '../_models/inspectionm';
 import { PaginatedResult } from '../_models/pagination';
 import { PictureInfo } from '../_models/pictureInfo';
@@ -13,7 +15,7 @@ import { PictureInfo } from '../_models/pictureInfo';
 })
 export class InspectionService {
 
-  baseUrl = 'http://localhost:5000/api/inspection/';
+  baseUrl = environment.apiUrl + 'inspection/';
 
   pictureInfo: PictureInfo;
 
@@ -27,7 +29,8 @@ export class InspectionService {
 
   constructor(private http: HttpClient) { }
 
-  getInspections(userParams, page?, itemsPerPage?): Observable<PaginatedResult<InspectionM[]>> {
+  getInspections(userParams, page?, itemsPerPage?,
+    orderByColumn?, orderByDirection?): Observable<PaginatedResult<InspectionM[]>> {
 
     const paginatedResult: PaginatedResult<InspectionM[]> = new PaginatedResult<InspectionM[]>();
 
@@ -36,6 +39,14 @@ export class InspectionService {
     if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
+    }
+
+    console.log('orderByColumn: ' + orderByColumn);
+    console.log('orderByDirection: ' + orderByDirection);
+
+    if (orderByColumn != null && orderByDirection != null) {
+      params = params.append('orderByColumn', orderByColumn);
+      params = params.append('orderByDirection', orderByDirection);
     }
 
     params = params.append('unitid', userParams.unitid);
@@ -139,6 +150,25 @@ export class InspectionService {
     console.log('unitid param: ' + this.inspectionParams.unitid);
     console.log('startDate param: ' + this.inspectionParams.startDate);
     console.log('endDate param: ' + this.inspectionParams.endDate);
+
+    return this.inspectionParams;
+  }
+
+  setInspectionSortParams(orderByColumn: string, orderByDirection: string) {
+
+    this.inspectionParams.ordeByColumn = orderByColumn;
+    this.inspectionParams.ordeByDirection = orderByDirection;
+
+    localStorage.setItem('ordeByColumn', orderByColumn);
+    localStorage.setItem('ordeByDirection', orderByDirection);
+  }
+
+  getInspectionSortParams(): any {
+    this.inspectionParams.orderByColumn = localStorage.getItem('orderByColumn');
+    this.inspectionParams.orderByDirection = localStorage.getItem('orderByDirection');
+
+    console.log('orderByColumn param: ' + this.inspectionParams.orderByColumn);
+    console.log('orderByDirection param: ' + this.inspectionParams.orderByDirection);
 
     return this.inspectionParams;
   }

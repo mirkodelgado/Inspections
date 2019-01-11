@@ -100,20 +100,62 @@ namespace Inspections.API.Data
             var inspections = _context.InspectionsM.AsQueryable();
 
             if (!String.IsNullOrEmpty(userParams.UnitId))
-                inspections = inspections.Where(i => i.ImEquip1Id.Equals(userParams.UnitId));
+                //inspections = inspections.Where(i => i.ImEquip1Id.Equals(userParams.UnitId));
+                inspections = inspections.Where(i => i.ImEquip1Id.Equals(userParams.UnitId) && i.ImCleanInspection.Equals("0"));
 
             if (!String.IsNullOrEmpty(userParams.StartDate) && !String.IsNullOrEmpty(userParams.EndDate))
             {
                 var startDate = DateTime.Parse(userParams.StartDate);
                 var endDate = DateTime.Parse(userParams.EndDate).AddDays(1);
 
-                inspections = inspections.Where(i => i.ImInspectionDate >= startDate && i.ImInspectionDate <= endDate);
+                //inspections = inspections.Where(i => i.ImInspectionDate >= startDate && i.ImInspectionDate <= endDate);
+                inspections = inspections.Where(i => i.ImInspectionDate >= startDate && i.ImInspectionDate <= endDate && i.ImCleanInspection.Equals("0"));
             }
 
             inspections = inspections.Include(i => i.BillToClient);
-            //inspections = inspections.Include(i => i.InspectionD);
+            inspections = inspections.Include(i => i.Depot);
 
-            inspections = inspections.OrderByDescending(i => i.ImInspectionDate);
+            switch (userParams.OrderByColumn)
+            {
+                case "imInspectionDate":
+                    if (userParams.OrderByDirection.Equals("asc"))
+                        inspections = inspections.OrderBy(i => i.ImInspectionDate);
+                    else
+                        inspections = inspections.OrderByDescending(i => i.ImInspectionDate);
+                    break;
+
+                case "depot.dptName":
+                    if (userParams.OrderByDirection.Equals("asc"))
+                        inspections = inspections.OrderBy(i => i.Depot.DptName);
+                    else
+                        inspections = inspections.OrderByDescending(i => i.Depot.DptName);
+                    break;
+
+                case "billToClient.btcBillToClientShortName":
+                    if (userParams.OrderByDirection.Equals("asc"))
+                        inspections = inspections.OrderBy(i => i.BillToClient.BtcBillToClientShortName);
+                    else
+                        inspections = inspections.OrderByDescending(i => i.BillToClient.BtcBillToClientShortName);
+                    break;
+
+                case "imEquip1Id":
+                    if (userParams.OrderByDirection.Equals("asc"))
+                        inspections = inspections.OrderBy(i => i.ImEquip1Id);
+                    else
+                        inspections = inspections.OrderByDescending(i => i.ImEquip1Id);
+                    break;
+
+                case "imInspectionRefNmbr":
+                    if (userParams.OrderByDirection.Equals("asc"))
+                        inspections = inspections.OrderBy(i => i.ImInspectionRefNmbr);
+                    else
+                        inspections = inspections.OrderByDescending(i => i.ImInspectionRefNmbr);
+                    break;
+
+                default:
+                    inspections = inspections.OrderByDescending(i => i.ImInspectionDate);
+                    break;
+            }
 
             return await PagedList<InspectionM>.CreateAsync(inspections, userParams.PageNumber, userParams.PageSize);
         }
