@@ -41,8 +41,8 @@ export class InspectionService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    console.log('orderByColumn: ' + orderByColumn);
-    console.log('orderByDirection: ' + orderByDirection);
+    // console.log('orderByColumn: ' + orderByColumn);
+    // console.log('orderByDirection: ' + orderByDirection);
 
     if (orderByColumn != null && orderByDirection != null) {
       params = params.append('orderByColumn', orderByColumn);
@@ -167,8 +167,8 @@ export class InspectionService {
     this.inspectionParams.orderByColumn = localStorage.getItem('orderByColumn');
     this.inspectionParams.orderByDirection = localStorage.getItem('orderByDirection');
 
-    console.log('orderByColumn param: ' + this.inspectionParams.orderByColumn);
-    console.log('orderByDirection param: ' + this.inspectionParams.orderByDirection);
+    // console.log('orderByColumn param: ' + this.inspectionParams.orderByColumn);
+    // console.log('orderByDirection param: ' + this.inspectionParams.orderByDirection);
 
     return this.inspectionParams;
   }

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
 
-  <a class="navbar-brand" [routerLink]="['/home']"><img [src]="'../assets/images/ITS-ConGlobal-Logo.png'"></a>
+  <a class="navbar-brand" [routerLink]="['/home']"><img class="img-fluid" [src]="'../assets/images/ITS-ConGlobal-Logo.png'"></a>
       
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+  <div class="collapse navbar-collapse" id="navbarCollapse" [ngClass]="{ 'show': navbarOpen }">
       <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
@@ -14,7 +14,7 @@
           </li>
                               
           <li class="nav-item">
-              <a class="nav-link" (click)="openModal(template)">About</a>
+              <a class="nav-link" style="cursor:pointer" (click)="openModal(template)">About</a>
           </li>
 
       </ul>    

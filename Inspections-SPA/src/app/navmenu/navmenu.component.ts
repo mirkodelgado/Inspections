@@ -10,6 +10,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class NavmenuComponent implements OnInit {
   modalRef: BsModalRef;
 
+  navbarOpen = false;
+
   config = {
     animated: true
   };
@@ -24,6 +26,10 @@ export class NavmenuComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
       this.modalRef = this.modalService.show(template, this.config);
+    }
+
+    toggleNavbar() {
+      this.navbarOpen = !this.navbarOpen;
     }
 
 }
